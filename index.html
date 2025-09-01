@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Playground</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="container header">
+    <h1>Interactive Playground</h1>
+    <button id="themeToggle" class="btn" aria-pressed="false" aria-label="Toggle theme">🌗 Toggle Theme</button>
+  </header>
+
+  <main class="container">
+    <!-- SECTION: Custom Validated Form -->
+    <section id="contact" class="card">
+      <h2>Contact Us</h2>
+      <form id="contactForm" novalidate>
+        <div class="grid">
+          <label>
+            Full Name
+            <input type="text" id="fullName" name="fullName" placeholder="Ada Lovelace" />
+            <small class="error" id="nameError" role="alert" aria-live="polite"></small>
+          </label>
+
+          <label>
+            Email
+            <input type="email" id="email" name="email" placeholder="ada@example.com" />
+            <small class="error" id="emailError" role="alert" aria-live="polite"></small>
+          </label>
+        </div>
+
+        <div class="grid">
+          <label>
+            Password
+            <input type="password" id="password" name="password" placeholder="At least 8 chars" />
+            <small class="hint" id="passwordHint">Min 8 chars, 1 number, 1 letter</small>
+            <small class="error" id="passwordError" role="alert" aria-live="polite"></small>
+          </label>
+
+          <label>
+            Confirm Password
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" />
+            <small class="error" id="confirmPasswordError" role="alert" aria-live="polite"></small>
+          </label>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" id="tos" name="tos" />
+          I agree to the Terms of Service
+        </label>
+        <small class="error" id="tosError" role="alert" aria-live="polite"></small>
+
+        <label>
+          Message
+          <textarea id="message" name="message" rows="4" maxlength="280" placeholder="Say hello…"></textarea>
+          <div class="muted"><span id="charCount">0</span> / 280</div>
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="btn primary" id="submitBtn">Send Message</button>
+          <button type="reset" class="btn outline" id="resetBtn">Reset</button>
+        </div>
+
+        <p class="success" id="formSuccess" role="status" aria-live="polite" hidden>✅ Form submitted! (Demo)</p>
+      </form>
+    </section>
+
+    <!-- SECTION: Live Search Filter -->
+    <section id="resources" class="card">
+      <h2>Resource Finder</h2>
+      <p>Type to filter the list below (live search).</p>
+      <input type="text" id="searchInput" class="input" placeholder="Search resources e.g., 'JavaScript'" aria-label="Search resources" />
+      <ul id="resourceList" class="list">
+        <li data-tags="javascript web frontend">JavaScript MDN Guide</li>
+        <li data-tags="html web basics">HTML5 Elements Reference</li>
+        <li data-tags="css styles layout">CSS Flexbox Cheatsheet</li>
+        <li data-tags="python backend api">Python Flask Tutorial</li>
+        <li data-tags="git version control">Git & GitHub Basics</li>
+        <li data-tags="accessibility a11y web">Web Accessibility Checklist</li>
+      </ul>
+      <p id="noResults" class="muted" hidden>No matching results.</p>
+    </section>
+
+    <!-- SECTION: FAQ Accordion -->
+    <section id="faq" class="card">
+      <h2>FAQ</h2>
+      <div class="accordion">
+        <button class="accordion__trigger" aria-expanded="false" aria-controls="a1" id="t1">What makes this form custom-validated?</button>
+        <div class="accordion__panel" id="a1" role="region" aria-labelledby="t1">
+          <p>Validation is performed entirely via JavaScript with our own rules and inline error messages.</p>
+        </div>
+
+        <button class="accordion__trigger" aria-expanded="false" aria-controls="a2" id="t2">Does the search work as I type?</button>
+        <div class="accordion__panel" id="a2" role="region" aria-labelledby="t2">
+          <p>Yes! Results update instantly as you type.</p>
+        </div>
+
+        <button class="accordion__trigger" aria-expanded="false" aria-controls="a3" id="t3">Is there a dark mode?</button>
+        <div class="accordion__panel" id="a3" role="region" aria-labelledby="t3">
+          <p>Tap the toggle at the top. Your choice is saved to localStorage.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>© <span id="year"></span> Interactive Playground</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
